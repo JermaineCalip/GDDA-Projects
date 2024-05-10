@@ -1,5 +1,6 @@
 # To import the necessary packages
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler, Normalizer
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -55,19 +56,26 @@ print(df.head(3).to_string())
 print(df.tail(3).to_string())
 
 # 5. Handle Outliers
-sns.boxenplot(x=df['Combined Games'])
-plt.title('Boxen plot of Numeric Column with Outliers')
-plt.show()
+# sns.boxenplot(x=df['Combined Games'])
+# plt.title('Boxen plot of Numeric Column with Outliers')
+# plt.show()
 
 # 6. Normalize/Scale Data
+# numerical_columns = data.select_dtypes(include=['int', 'float']).columns
 
 # 7.Check and Correct Date Formats
-# Since each data types is only object and integers. There's no need to check and correct date formats
+# Since each data types is only objects and integers. There's no need to check and correct date formats
 
 # 8. Text Data Cleaning
-
+# To remove duplicated acronym names enclosed in brackets
+df['Country'] = df['Country'].str.replace(r'\s*\[.*?\]\s*', '', regex=True)
+print(df.to_string())
 
 # 9. Address Structural Issues
+# All column names and unnecessary columns are already addressed on the first part of the code
+
+# 10. Handle Categorical Data
+
 
 
 
