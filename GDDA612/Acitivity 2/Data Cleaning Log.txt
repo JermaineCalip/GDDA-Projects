@@ -1,0 +1,6 @@
+Data Cleaning Log for Olympics
+-----------------
+
+All Cleaning Operations Performed
+Deletion: I deleted all the unnecessary characters and words in the data set
+Skip: I skipped unessential rows not needed to be analyze
