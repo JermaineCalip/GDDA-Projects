@@ -55,11 +55,12 @@ col_rows = df[col_name].str.title() # to convert string into title
 print(df.head(3).to_string())
 print(df.tail(3).to_string())
 
+
 # 5. Handle Outliers
 # To define numerical columns in the data set
 numerical_columns = ['Summer', 'Gold', 'Silver', 'Bronze', 'Winter', 'Total',
                      'Combined Games', 'Total Gold', 'Total Silver', 'Total Bronze', 'Combined Total']
-# TO melt the data set to reshape it into a long format
+# To melt the data set to reshape it into a long format
 melteddf = pd.melt(df[numerical_columns], var_name='Column', value_name='Value')
 
 # Create a box plot of the original data
@@ -69,7 +70,6 @@ plt.title('Box Plot of Numeric Columns (Original Data)')
 plt.xlabel('Numeric Columns')
 plt.ylabel('Values')
 plt.show()
-
 # I used trimming to treat outliers
 # Define trimming percentage
 trim_percentage = 5
@@ -138,6 +138,15 @@ with open("Data Cleaning Log.txt", "w") as log_file:
     log_file.write("All Cleaning Operations Performed\n")
     log_file.write("Deletion: I deleted all the unnecessary characters and words in the data set\n")
     log_file.write("Skip: I skipped unessential rows not needed to be analyze\n")
+
+    log_file.write("Data Cleaning Log for Books\n")
+    log_file.write("-----------------\n")
+    log_file.write("\n")
+    # To add description for each header/Process
+    log_file.write("All Cleaning Operations Performed\n")
+    log_file.write("Imputation: To addressed missing values. I used imputation rather than deletion because we needed the data\n")
+    log_file.write("Deletion: I deleted all the unnecessary characters, dates and columns in the data set\n")
+
 print("Data cleaning log has been created.")
 
 # 13. Validate Cleaned Data
