@@ -1,16 +1,12 @@
 # Import necessary packages
 import pandas as pd
-import seaborn as sns
 
-# Q1
 # This is to load the dataset into a DataFrame
-df = pd.read_csv("Retail Dataset.csv")
+df = pd.read_csv("Sales_Sample_Public_Dataset.csv", encoding="ISO-8859-1")
 
-# Q2
 # This is to show few rows in the DataFrame
 print(df.head(5).to_string())
 
-# @3
 # This is to show the total numbers of missing values
 print(df.isnull().sum())
 

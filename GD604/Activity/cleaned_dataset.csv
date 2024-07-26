@@ -1,0 +1,10 @@
+id,name,age,gender,email,join_date,salary,department
+1,John Doe,29,male,johndoe@example.com,2020-02-20,55000.0,Engineering
+2,Jane Smith,35,female,janesmith@example.com,1900-01-01,72000.0,Marketing
+3,Mary Johnson,32,female,maryj@example.com,2021-03-30,62000.0,Sales
+4,Michael Brown,32,male,michael.brown@example.com,1900-01-01,62000.0,HR
+5,James Wilson,42,male,james.wilson@example.com,1900-01-01,75000.0,Engineering
+7,Robert Jones,31,male,robert.jones@example.com,1900-01-01,60000.0,Marketing
+8,Linda Martinez,40,female,linda.martinez@example.com,2017-11-30,71000.0,Unknown
+9,David Garcia,33,male,david.garcia@example.com,1900-01-01,53000.0,Engineering
+10,Emma Martinez,25,female,emma.martinez@example.com,1900-01-01,62000.0,Sales
