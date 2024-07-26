@@ -1,0 +1,11 @@
+id,name,age,gender,email,join_date,salary,department
+1,John Doe,29,male,johndoe@example.com,2020/02/20,55000,Engineering
+2,Jane Smith,35,Female,janesmith@@example.com,2019-07-15,72000,Marketing
+3,Mary Johnson,NaN,Female,maryj@example.,2021/03/30,,Sales
+4,Michael Brown,,Male,michael.brown@example.com,2021-06-20,62000,HR
+5,James Wilson,42,,james.wilson@example.com,2021-05-10,75000,Engineering
+6,Patricia Lee,27,Female,,2020/12/05,49000,Sales
+7,Robert Jones,31,Male,robert.jones@example.com,2018-09-25,60000,Marketing
+8,Linda Martinez,40,Female,linda.martinez@example.com,2017/11/30,71000,
+9,David Garcia,33,Male,david.garcia@com,,53000,Engineering
+10,Emma Martinez,25,Female,emma.martinez@example.com,2021-01-01,NaN,Sales
