@@ -97,7 +97,7 @@ plt.tight_layout()
 plt.show()
 
 # Inferential Analysis
-alpha = 0.05
+
 t_stat, p_val = ttest_ind(df['order_total'], df['order_price'])
 print(f"T-statistic: {t_stat}")
 print(f"P-value: {p_val}")
