@@ -1,7 +1,8 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import pyarrow as pa
+import pyarrow.parquet as pq
 from pymongo import MongoClient, ASCENDING
 
 df = pd.read_csv('E-commerce.csv', encoding='ISO-8859-1')
@@ -117,4 +118,19 @@ collection.update_many({'Country': 'United Kingdom'}, {'$set': {'Country': 'UK'}
 # To print each document
 for doc in collection.find({'Country': 'UK'}).limit(5):
     print(doc)
+
+# Parquet File
+cursor = collection.find({})
+cleaned_df = pd.DataFrame(list(cursor))
+
+# Dropping the '_id' because of conversion error
+if '_id' in cleaned_df.columns:
+    cleaned_df = cleaned_df.drop(columns=['_id'])
+
+# Convert DataFrame to Parquet
+table = pa.Table.from_pandas(cleaned_df)
+pq.write_table(table, 'E-Commerce')
+
+# Close the connection
+client.close()
 
