@@ -99,6 +99,7 @@ alpha = 0.5
 male_salaries = df[df['Gender'] == 'Male']['Salary']
 female_salaries = df[df['Gender'] == 'Female']['Salary']
 t_stat, p_value = stats.ttest_ind(male_salaries, female_salaries)
+print(t_stat)
 if p_value < alpha:
     print("Reject the null hypothesis: There is a significant difference in salaries between genders.")
 else:
