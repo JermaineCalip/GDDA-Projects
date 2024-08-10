@@ -55,11 +55,11 @@ print(f"\nTotal number of outliers: {total_outliers}")
 print(f"Total number of rows after outlier removal: {after_removal}")
 
 # For loop for visualization for each column
-# for col in numerical_columns:
-#     plt.figure(figsize=(12,8))
-#     sns.boxplot(data=df, x=col)
-#     plt.title(f'Box Plot of {col} after Removing Outliers')
-#     plt.show()
+for col in numerical_columns:
+    plt.figure(figsize=(12,8))
+    sns.boxplot(data=df, x=col)
+    plt.title(f'Box Plot of {col} after Removing Outliers')
+    plt.show()
 
 # Data Type Conversion
 df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%Y %H:%M')
