@@ -106,3 +106,23 @@ print(f"Ridge Regression R-squared: {r2}")
 cross = cross_val_score(best_ridge, X_train, y_train, cv=5, scoring='neg_mean_squared_error')
 print(f"\nCross-Validation MSE Mean: {cross.mean()}")
 print(f"Cross-Validation MSE Standard Deviation: {cross.std()}")
+
+# Residuals Distribution Plot
+residuals = y_test - y_pred
+plt.figure(figsize=(12,8))
+sns.histplot(residuals, kde=True, color='blue', label='Ridge Test Residuals')
+plt.title('Ridge Regression: Residuals Distribution')
+plt.xlabel('Residuals')
+plt.ylabel('Frequency')
+plt.show()
+
+# Actual vs Predicted Plot
+plt.figure(figsize=(12,8))
+plt.scatter(y_test, y_pred, alpha=0.7, edgecolors=(0, 0, 0))
+plt.title('Actual vs Predicted Values')
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'k--', lw=4)
+plt.show()
+
+
