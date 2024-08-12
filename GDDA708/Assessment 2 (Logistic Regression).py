@@ -80,8 +80,8 @@ print(f"Testing set shape: X_test: {X_test.shape}, y_test: {y_test.shape}")
 # Logistic Regression using RandomizedSearchCV
 log_reg = LogisticRegression()
 param_distributions = {
-    'C': [0.1, 1, 10],  # Regularization intensity
-    'solver': ['newton-cg', 'lbfgs', 'liblinear']  # optimization algorithm
+    'C': [0.1, 1, 10],
+    'solver': ['newton-cg', 'lbfgs', 'liblinear']
 }
 random_search = RandomizedSearchCV(log_reg, param_distributions, n_iter=100, cv=5,
                 scoring='accuracy', random_state=42, return_train_score=True)
@@ -105,7 +105,8 @@ plt.ylabel('True Label')
 plt.show()
 
 # Classification Report
-print("\nClassification Report:", classification_report(y_test, y_pred))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
 
 # Accuracy, Precision, Recall, and F1-Score
 accuracy = accuracy_score(y_test, y_pred)
