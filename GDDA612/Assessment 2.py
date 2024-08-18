@@ -1,3 +1,4 @@
+# Importing Necessary Packages
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -5,21 +6,28 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 from pymongo import MongoClient, ASCENDING
 
+# This is to load the dataset into a DataFrame
 df = pd.read_csv('E-commerce.csv', encoding='ISO-8859-1')
-
 # Load and Analyze the structure of Dataset
 print(df.head().to_string(),'\n')
 print(df.info())
-print('Original Dataset Shape:', df.shape)
 
 # Pre-processing
 # To find missing values in the dataset
 print('\nMissing Values found in the dataset:')
 print(df.isnull().sum())
 
+# Distribution and Skewness
+# missing_columns = ['Columns with missing Values']
+# for col in missing_columns:
+#     plt.figure(figsize=(10, 5))
+#     sns.histplot(df[col], kde=True)
+#     plt.title(f'Histogram of {col}')
+#     plt.show()
+
 # To fill missing values in the dataset
-df['CustomerID'] = df['CustomerID'].fillna(0)
 df['Description'] = df['Description'].fillna('Unknown')
+df = df.drop(columns=['CustomerID'])
 
 # To find duplicated values in the dataset
 print("\nTotal No. of Duplicates:", df.duplicated().sum())
@@ -63,7 +71,8 @@ for col in numerical_columns:
 
 # Data Type Conversion
 df['InvoiceDate'] = pd.to_datetime(df['InvoiceDate'], format='%m/%d/%Y %H:%M')
-df['CustomerID'] = df['CustomerID'].astype('int64')
+df['InvoiceDate'] = df['InvoiceDate'].dt.date
+df['InvoiceDate'] = df['InvoiceDate'].astype(str)
 
 # To verify
 print("\nData Types After Conversion:")
@@ -124,8 +133,7 @@ cursor = collection.find({})
 cleaned_df = pd.DataFrame(list(cursor))
 
 # Dropping the '_id' because of conversion error
-if '_id' in cleaned_df.columns:
-    cleaned_df = cleaned_df.drop(columns=['_id'])
+cleaned_df = cleaned_df.drop(columns=['_id'])
 
 # Convert DataFrame to Parquet
 table = pa.Table.from_pandas(cleaned_df)

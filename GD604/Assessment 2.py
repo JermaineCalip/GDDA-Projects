@@ -1,7 +1,6 @@
 # Import necessary packages
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 import seaborn as sns
 from scipy.stats import ttest_ind
 
@@ -11,9 +10,8 @@ df = pd.read_csv("Retail Dataset.csv")
 
 # This is to show first 5 rows in the DataFrame
 print(df.head().to_string())
-
 # This is to show last 5 rows in the DataFrame
-print(df.tail(10).to_string())
+print(df.tail(3).to_string())
 
 # This is to show the total numbers of missing values
 print(df.isnull().sum())
@@ -21,9 +19,17 @@ print(df.isnull().sum())
 print(df.dtypes)
 
 # Dealing with Missing Values
-# Using Mean Imputation
-mean = ['order_price', 'order_total', 'distance_to_nearest_warehouse']
-df[mean] = df[mean].fillna(df[mean].mean())
+# Distribution and Skewness
+missing_columns = ['order_price', 'order_total', 'distance_to_nearest_warehouse']
+for col in missing_columns:
+    plt.figure(figsize=(10, 5))
+    sns.histplot(df[col], kde=True)
+    plt.title(f'Histogram of {col}')
+    plt.show()
+
+# Using median Imputation
+median = ['order_price', 'order_total', 'distance_to_nearest_warehouse']
+df[median] = df[median].fillna(df[median].median())
 
 # Dropping Unnecessary Column with Missing Values
 drop = ['customer_lat', 'customer_long']
@@ -74,7 +80,7 @@ plt.title('Correlation Matrix Heatmap')
 plt.show()
 
 # Exporting CSV
-df.to_csv('cleaned_retail_dataset.csv', index=False)
+df.to_csv('cleaned_dataset.csv', index=False)
 
 # Visualization (Box Plot)
 plt.figure(figsize=(14, 8))
@@ -97,7 +103,7 @@ plt.tight_layout()
 plt.show()
 
 # Inferential Analysis
-
+alpha = 0.5
 t_stat, p_val = ttest_ind(df['order_total'], df['order_price'])
 print(f"T-statistic: {t_stat}")
 print(f"P-value: {p_val}")
